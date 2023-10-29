@@ -1,0 +1,3 @@
+message_id;sender;timestamp_created;status;body;timestamp_updated;info
+d9d431cbc89f4dcfb2dcc3d3f822cf1c;LKP;28.07.2023 11:32;4;"{""price"": 2490, ""dateTo"": ""9999-12-31"", ""dateFrom"": ""2023-07-28"", ""promoPrice"": null, ""materialNumber"": ""400031534""}";28.07.2023 12:02;[]
+ccb51fc271b04db581dcc15339810d95;LKP;27.07.2023 18:10;4;"{""price"": 2490, ""dateTo"": ""9999-12-31"", ""dateFrom"": ""2023-08-15"", ""promoPrice"": 1740, ""materialNumber"": ""400031534""}";27.07.2023 18:30;[]
