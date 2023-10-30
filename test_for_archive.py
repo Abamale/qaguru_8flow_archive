@@ -2,6 +2,7 @@ import csv
 import zipfile
 from zipfile import ZipFile, ZIP_DEFLATED
 import os
+import openpyxl
 
 import pytest
 from PyPDF2 import PdfReader
@@ -19,7 +20,7 @@ def create_zip():
     with ZipFile(zip_path, 'w', compression=ZIP_DEFLATED, compresslevel=5) as myzip:
         for folder, subfolders, files in os.walk('resources'):
             for file in files:
-                if file.endswith(('.csv', '.xlsx', '.pdf')):
+                if file.endswith(('.csv', '.xlsx', '.pdf', '.txt')):
                     myzip.write(os.path.join(folder, file),
                                 os.path.relpath(os.path.join(folder, file), 'resources'),
                                 compress_type=zipfile.ZIP_DEFLATED)
@@ -55,6 +56,13 @@ def test_check_count_row_in_txt(create_zip):
         with myzip.open('example_three.txt', 'r') as myfile:
             row_count_arc = sum(1 for row in myfile)
     assert row_count == row_count_arc, "Количество строк не совпадает"
+
+
+
+
+
+
+
 
 
 
