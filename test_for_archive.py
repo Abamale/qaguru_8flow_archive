@@ -4,6 +4,7 @@ from zipfile import ZipFile, ZIP_DEFLATED
 import os
 
 import pytest
+from PyPDF2 import PdfReader
 
 
 @pytest.fixture()
@@ -35,6 +36,25 @@ def test_check_count_row_csv(create_zip):
                 row_count_arc += 1
     assert row_count == row_count_arc, "Количество строк не совпадает"
 
+
+def test_check_count_pages_pdf(create_zip):
+    with open('resources/example_two.pdf', 'rb') as pdf_file:
+        reader = PdfReader(pdf_file)
+        count_page = len(reader.pages)
+    with ZipFile('resources/file_zip') as myzip:
+        with myzip.open('example_two.pdf', 'r') as myfile:
+            reader = PdfReader(myfile)
+            count_page_arc = len(reader.pages)
+    assert count_page == count_page_arc, "Количество страниц не совпадает"
+
+
+def test_check_count_row_in_txt(create_zip):
+    with open('resources/example_three.txt', 'r') as f:
+        row_count = sum(1 for row in f)
+    with ZipFile('resources/file_zip') as myzip:
+        with myzip.open('example_three.txt', 'r') as myfile:
+            row_count_arc = sum(1 for row in myfile)
+    assert row_count == row_count_arc, "Количество строк не совпадает"
 
 
 
