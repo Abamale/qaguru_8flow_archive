@@ -32,7 +32,7 @@ def test_check_count_row_csv(create_zip):
         row_count = sum(1 for row in file)
     with ZipFile('resources/file_zip') as myzip:
         with myzip.open('example_one.csv', 'r') as myfile:
-            for line in myfile:
+            for _ in myfile:
                 row_count_arc += 1
     assert row_count == row_count_arc, "Количество строк не совпадает"
 
