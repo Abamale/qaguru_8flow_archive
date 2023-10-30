@@ -26,10 +26,10 @@ def create_zip():
 
 def test_check_count_row_csv(create_zip):
     row_count_arc = 0
-    with open('../resources/example_one.csv', 'r') as f:
+    with open('resources/example_one.csv', 'r') as f:
         file = csv.reader(f, delimiter=";")
         row_count = sum(1 for row in file)
-    with ZipFile('../resources/file_zip') as myzip:
+    with ZipFile('resources/file_zip') as myzip:
         with myzip.open('example_one.csv', 'r') as myfile:
             for line in myfile:
                 row_count_arc += 1
